@@ -9,7 +9,24 @@ services:
     volumes:
       - furgpt-ollama-volume:/root/.ollama
       - ./Modelfile:/root/.ollama/Modelfile:ro
+    networks:
+      - furgpt-network
 
+  furgpt-discord-bot:
+    image: furgpt-discord-bot
+    build: discord-bot
+    container_name: furgpt-discord-bot
+    environment:
+      - DISCORD_APP_TOKEN
+    networks:
+      - furgpt-network 
+    
 volumes:
   furgpt-ollama-volume:
     name: furgpt-ollama-volume
+
+networks:
+  furgpt-network:
+    name: furgpt-network
+
+  
