@@ -1,0 +1,15 @@
+services:
+  furgpt-ollama:
+    image: ollama/ollama
+    container_name: furgpt-ollama
+    gpus:
+      - driver: nvidia
+        count: 1
+        capabilities: [gpu]
+    volumes:
+      - furgpt-ollama-volume:/root/.ollama
+      - ./Modelfile:/root/.ollama/Modelfile:ro
+
+volumes:
+  furgpt-ollama-volume:
+    name: furgpt-ollama-volume
