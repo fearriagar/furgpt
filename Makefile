@@ -11,3 +11,7 @@ create-model:
 .PHONY: run-model
 run-model:
 	docker exec furgpt-ollama ollama run furgpt-llm
+
+.PHONY: stop-furgpt
+stop-furgpt:
+	docker compose down
